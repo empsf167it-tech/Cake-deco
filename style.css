@@ -253,23 +253,23 @@ img {
   color: #fff;
 }
 
-/* Navbar Components */
+/* Navbar Components - Option 01 Design */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.9);
-  /* Solid white by default in light mode */
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--border-color);
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   transition: var(--transition);
-  padding: 15px 0;
+  padding: 10px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
 [data-theme="dark"] .navbar {
-  background: rgba(10, 10, 10, 0.9);
+  background: #111111;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* Scrolled state refinement */
@@ -279,91 +279,253 @@ img {
 }
 
 .nav-container {
-  height: 70px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: var(--transition);
 }
 
+.navbar.scrolled .nav-container {
+  height: 65px;
+}
+
+/* Logo Group Styling with Subtitle & Lines */
+.logo-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-decoration: none;
+}
+
+/* Generic Logo Style (Applies to Header, Footer, and Drawer) */
 .logo {
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--color-primary);
   display: inline-flex !important;
   align-items: center !important;
   gap: 12px !important;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-primary) !important; /* Pink */
   line-height: normal;
-}
-
-.logo span {
-  display: inline-block;
-  transform: translateY(2px); /* Optical alignment for Times New Roman font */
+  text-decoration: none;
 }
 
 .logo svg {
-  width: 45px;
-  height: 45px;
-  min-width: 45px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
   fill: var(--color-primary);
   display: block;
 }
 
+.logo span {
+  display: inline-block;
+  transform: translateY(2px); /* Optical alignment */
+}
+
+.logo-subtitle-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.logo-line {
+  flex-grow: 1;
+  height: 1px;
+  background: var(--color-accent); /* Gold */
+  opacity: 0.8;
+}
+
+.logo-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--color-accent); /* Gold */
+  text-transform: uppercase;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Navigation Links */
 .nav-links {
   display: flex;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   align-items: center;
 }
 
 .nav-link {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-primary);
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  position: relative;
+  padding: 8px 0;
+  transition: var(--transition);
 }
 
-.nav-link:hover {
-  color: var(--color-primary);
-}
-
+.nav-link:hover,
 .nav-link.active {
   color: var(--color-primary);
-  font-weight: 700;
-  position: relative;
 }
 
-.nav-link.active::after {
+.nav-link::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
-  width: 100%;
+  width: 0;
   height: 2px;
   background: var(--color-primary);
+  transition: var(--transition);
   border-radius: 2px;
 }
 
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Right-side actions (Phone badge & CTA Button) */
 .nav-actions {
   display: flex;
-  gap: var(--spacing-sm);
+  gap: 15px;
   align-items: center;
 }
 
-.theme-toggle,
-.rtl-toggle,
+/* Phone Call Badge */
+.phone-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border-color);
+  padding: 8px 20px;
+  border-radius: 30px;
+  transition: var(--transition);
+  text-decoration: none;
+  background: transparent;
+}
+
+.phone-badge:hover {
+  background: var(--bg-secondary);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.phone-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent); /* Gold icon */
+}
+
+.phone-icon-circle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.phone-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.phone-number {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.phone-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+}
+
+/* Order Now CTA Button */
+.header-cta-btn-modern {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--color-primary); /* Pink */
+  color: #FFFFFF !important;
+  padding: 6px 6px 6px 22px;
+  border-radius: 30px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: var(--transition);
+  border: 1px solid var(--color-primary);
+  box-shadow: 0 4px 15px rgba(255, 93, 143, 0.15);
+  text-decoration: none;
+}
+
+.header-cta-btn-modern:hover {
+  background: #e54c7c;
+  border-color: #e54c7c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 93, 143, 0.25);
+}
+
+.cta-icon-circle {
+  width: 32px;
+  height: 32px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  transition: var(--transition);
+}
+
+.header-cta-btn-modern:hover .cta-icon-circle {
+  transform: rotate(15deg) scale(1.05);
+}
+
+.cta-icon-circle svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* Header User Button (Login Link) */
+.header-user-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  background: transparent;
+  text-decoration: none;
+}
+
+.header-user-btn:hover {
+  background: var(--bg-secondary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.header-user-btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* Generic/Mobile Buttons */
 .menu-btn {
   background: none;
   border: none;
   cursor: pointer;
   color: var(--text-primary);
-  /* Use text-primary for icons to ensure visibility in both modes */
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  transition: var(--transition);
   border: 1px solid var(--border-color);
 }
 
@@ -622,6 +784,9 @@ img {
   }
 
   .nav-links,
+  .phone-badge,
+  .header-user-btn,
+  .header-cta-btn-modern,
   .nav-actions .theme-toggle,
   .nav-actions .rtl-toggle,
   .nav-login-btn {
@@ -1103,3 +1268,65 @@ img {
     justify-content: center !important;
   }
 }
+
+@media (max-width: 1200px) {
+  .logo-group .logo {
+    font-size: 1.8rem !important;
+  }
+  .logo-group .logo svg {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+  }
+  .logo-subtitle {
+    font-size: 0.55rem !important;
+    letter-spacing: 1.5px !important;
+  }
+  .nav-links {
+    gap: 15px !important;
+  }
+  .nav-link {
+    font-size: 0.95rem !important;
+  }
+  .nav-actions {
+    gap: 10px !important;
+  }
+  .phone-badge {
+    padding: 6px 14px !important;
+  }
+  .phone-number {
+    font-size: 0.8rem !important;
+  }
+  .phone-label {
+    font-size: 0.65rem !important;
+  }
+  .header-user-btn {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .header-user-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  .header-cta-btn-modern {
+    padding: 5px 5px 5px 15px !important;
+    font-size: 0.85rem !important;
+    gap: 10px !important;
+  }
+  .cta-icon-circle {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .cta-icon-circle svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .phone-badge {
+    display: none;
+  }
+}
+
+
