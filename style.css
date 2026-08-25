@@ -217,6 +217,43 @@ img {
   min-height: 54px;
 }
 
+/* Blog Read More Button Styling */
+.read-more-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.read-more-btn:hover {
+  color: #000000 !important;
+}
+
+[data-theme="dark"] .read-more-btn:hover {
+  color: #ffffff !important;
+}
+
+.card .read-more-btn svg,
+.read-more-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+  margin-bottom: 0 !important;
+  display: inline-block !important;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+  stroke: currentColor !important;
+}
+
+.read-more-btn:hover svg {
+  transform: translateX(5px);
+}
+
+
+
 /* Button Styling */
 .btn {
   padding: 16px 32px;
