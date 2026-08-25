@@ -221,35 +221,42 @@ img {
 .read-more-btn {
   display: inline-flex !important;
   align-items: center;
-  gap: 8px;
-  color: var(--color-primary);
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: var(--transition);
-  text-decoration: none;
+  justify-content: center;
+  padding: 10px 28px !important;
+  border-radius: 50px !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  transition: var(--transition) !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  background: var(--color-primary) !important;
+  color: #fff !important;
+  border: 2px solid var(--color-primary) !important;
+  box-shadow: 0 4px 10px rgba(255, 93, 143, 0.15);
 }
 
 .read-more-btn:hover {
-  color: #000000 !important;
+  background: #e55280 !important; /* Slightly darker pink for active hover state */
+  border-color: #e55280 !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 93, 143, 0.3);
+}
+
+[data-theme="dark"] .read-more-btn {
+  box-shadow: 0 4px 10px rgba(255, 93, 143, 0.1);
 }
 
 [data-theme="dark"] .read-more-btn:hover {
-  color: #ffffff !important;
+  background: #e55280 !important;
+  border-color: #e55280 !important;
+  color: #fff !important;
+  box-shadow: 0 6px 15px rgba(255, 93, 143, 0.25);
 }
 
 .card .read-more-btn svg,
 .read-more-btn svg {
-  width: 16px !important;
-  height: 16px !important;
-  margin-bottom: 0 !important;
-  display: inline-block !important;
-  vertical-align: middle;
-  transition: transform 0.3s ease;
-  stroke: currentColor !important;
-}
-
-.read-more-btn:hover svg {
-  transform: translateX(5px);
+  display: none !important;
 }
 
 
